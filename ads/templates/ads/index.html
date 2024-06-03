@@ -1,0 +1,134 @@
+{% load static %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">     
+    </head>
+    <body>
+
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Target Ads.</a>
+      <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+          <a class="nav-link" href="#">Sign out</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link active" href="/">
+                  <span data-feather="home"></span>
+                  All <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="ads?age=16">
+                  <span data-feather="home"></span>
+                  Younger than 18 Years <span class="sr-only"></span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="ads?age=20">
+                  <span data-feather="home"></span>
+                  Older than 18 Years <span class="sr-only"></span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="ads?gender=2">
+                  <span data-feather="home"></span>
+                  Male <span class="sr-only"></span>
+                </a>
+              </li>
+               <li class="nav-item">
+                <a class="nav-link active" href="ads?gender=3">
+                  <span data-feather="home"></span>
+                  Female <span class="sr-only"></span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="ads?country=1">
+                  <span data-feather="home"></span>
+                  Pakistan <span class="sr-only"></span>
+                </a>
+              </li>
+                            <li class="nav-item">
+                <a class="nav-link active" href="ads?country=3">
+                  <span data-feather="home"></span>
+                  Srilanka <span class="sr-only"></span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="ads?country=5">
+                  <span data-feather="home"></span>
+                  UAE <span class="sr-only"></span>
+                </a>
+              </li>              
+            </ul>
+          </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+            <h1 class="h2">Dashboard</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+            </div>
+          </div>
+
+                    <div class="row">                    
+            {% if latest_ad_list %}
+                {% for ad in latest_ad_list %}
+                    <div class="col-md-6">
+                        <div class="container">
+                            <div class="card" >
+                                <img class="card-img-top" height="300px" src="{{ad.image.url}}" alt="Card image cap">
+                                <div class="card-body">
+                                    <a href="#">
+                                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ add.title }}</h5>
+                                    </a>
+                                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ ad.description }}</p> 
+                                                          <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Validity : <i><b>{{ ad.validity_date }}</b></i></p> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No Ads. are available</p>
+            {% endif %}
+        </div>  
+
+
+        </main>
+      </div>
+    </div>
+
+
+
+      
+        
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->     
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>  
+    </body>
+</html>
+
+
+
+
+
+
